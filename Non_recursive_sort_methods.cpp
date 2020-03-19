@@ -79,46 +79,42 @@ void sort::sort_method_bubble() {
 }
 
 void sort::sort_method_insertion() {
-	int k = 0;
+	
+	int actual_number, place, k = 0;
 
-	for (k; k < array_length; k++) {
+	for (k; k < array_length-1; k++) {
+		cin >> actual_number;
+		position[k] = actual_number;
+		place = k;
 
-		int v_aux, actual_position;
-		cin >> v_aux;
+		if (k == 0) {
 
-		if (k > 0) {
-
-			if (v_aux > position[k - 1]) {
-
-				actual_position = position[k - 1];
-				position[k - 1] = v_aux;
-				position[k] = actual_position;
-
-
-			}
-
-			else {
-				position[k] = v_aux;
-				break;
-			}
-
-			for (int j = 0; j < array_length; j++) {
-				if (j == k) {
-					break;
-				}
-				cout << position[j] << "\t";
-			}
+			position[k] = actual_number;
 
 		}
 		else {
 
-			position[k] = v_aux;
+			while (place > 0 && position[place - 1] > actual_number) {
+
+				position[place] = position[place - 1];
+				place--;
+			}
+
+			position[place] = actual_number;
+
+
 
 		}
-
-
-		cout << "\n";
+	
+	
+	
 	}
+
+	print_array();
+
+
+
+
 }
 
 
