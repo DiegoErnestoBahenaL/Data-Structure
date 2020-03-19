@@ -1,4 +1,4 @@
-//Created by Diego Ernesto Bahena López - 5B 18100022 
+//Created by Diego Ernesto Bahena LÃ³pez - 5B 18100022 
 //This program contains the first 3 sort methods (Bubble, insertion & selection) 
 
 #include <iostream>
@@ -16,6 +16,7 @@ public:
 	void fill_array();
 	void sort_method_bubble();
 	void sort_method_insertion();
+	void sort_method_selection();
 	void print_array();
 	~sort();
 };
@@ -57,10 +58,13 @@ void sort::sort_method_bubble() {
 	print_array();
 	cout << "\n";
 	while (1 == 1) {
+
 		int counter = 0;
 		for (int i = 0; i < array_length - 1; i++) {
+
 			int number_compare = position[i];
 			if (number_compare > position[i + 1]) {
+
 				int num_x = position[i + 1];
 				position[i + 1] = number_compare;
 				position[i] = num_x;
@@ -68,6 +72,7 @@ void sort::sort_method_bubble() {
 			}
 		}
 		if (counter > 0) {
+
 			print_array();
 			cout << "\n";
 		}
@@ -79,10 +84,10 @@ void sort::sort_method_bubble() {
 }
 
 void sort::sort_method_insertion() {
-	
+
 	int actual_number, place, k = 0;
 
-	for (k; k < array_length-1; k++) {
+	for (k; k < array_length; k++) {
 		cin >> actual_number;
 		position[k] = actual_number;
 		place = k;
@@ -90,7 +95,14 @@ void sort::sort_method_insertion() {
 		if (k == 0) {
 
 			position[k] = actual_number;
-
+			for (int i = 0; i < array_length; i++)
+			{
+				cout << position[i] << "\t";
+				if (i == k) {
+					break;
+				}
+			}
+			cout << "\n";
 		}
 		else {
 
@@ -102,19 +114,18 @@ void sort::sort_method_insertion() {
 
 			position[place] = actual_number;
 
+			for (int i = 0; i < array_length; i++)
+			{
+				cout << position[i] << "\t";
+				if (i == k) {
+					break;
+				}
+			}
 
-
+			cout << "\n";
 		}
-	
-	
-	
+
 	}
-
-	print_array();
-
-
-
-
 }
 
 
