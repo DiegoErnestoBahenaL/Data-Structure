@@ -102,7 +102,7 @@ void sort::sort_method_insertion() {
 					break;
 				}
 			}
-			cout << "\n";
+			cout << "\n\n";
 		}
 		else {
 
@@ -122,12 +122,41 @@ void sort::sort_method_insertion() {
 				}
 			}
 
-			cout << "\n";
+			cout << "\n\n";
 		}
 
 	}
 }
 
+void sort:: sort_method_selection() {
+
+	print_array();
+	cout << "\n";
+	int little_number, jumps = array_length, counter=0;
+	for (int i = 0; i < array_length-1; i++) {
+
+		int little_number = i;
+		for (int j = i + 1; j < array_length; j++) {
+
+			
+			if (position[j] < position[little_number]) {
+
+				little_number = j;
+			}
+			
+		}
+		int v_aux = position[i];
+		position[i] = position[little_number];
+		position[little_number] = v_aux;
+		counter++;
+
+		print_array();
+		cout << "\n";
+	}
+
+	
+
+}
 
 /////////////////////////////////
 // Functions
@@ -138,7 +167,7 @@ void sort::sort_method_insertion() {
 
 int main() {
 
-	
+
 
 	while (1 == 1) {
 
@@ -156,7 +185,7 @@ int main() {
 			b1.fill_array();
 			b1.sort_method_bubble();
 			system("pause");
-			
+
 		}
 			  break;
 		case 2: {
@@ -165,16 +194,17 @@ int main() {
 			insert.create_array();
 			insert.sort_method_insertion();
 			system("pause");
-		
+
 		}
 			  break;
-
-			  cout << "Not ready yet";
-			  system("pause");
-			  break;
-		case 3:
-			cout << "not ready yet";
+		case 3: {
+			sort selection;
+			selection.ask_array();
+			selection.create_array();
+			selection.fill_array();
+			selection.sort_method_selection();
 			system("pause");
+		}
 			break;
 		case 4:
 			return 0;

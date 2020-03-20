@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{97D00294-C9A9-448F-9D35-6242A680D70A}</ProjectGuid>
+    <ProjectGuid>{819E1827-5F22-4F0E-B705-F25490D6ED91}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Nonrecursivesortmethods</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
