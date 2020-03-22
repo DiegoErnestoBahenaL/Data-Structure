@@ -1,5 +1,5 @@
 //Created by Diego Ernesto Bahena López - 5B 18100022 
-//This program contains the  6 sort methods (Bubble, insertion, selection, shell, quicksort, merge) 
+//This program contains the sort methods (Bubble, insertion, selection, shell, quicksort, merge) 
 
 #include <iostream>
 
@@ -28,7 +28,7 @@ public:
 	void sort_method_selection();
 	void sort_method_shell();
 
-	//destruyer
+	//destroyer
 	~sort();
 };
 
@@ -39,6 +39,7 @@ sort::~sort() {
 	
 	delete[] position;
 }
+
 void sort::ask_array() {
 	cout << "Digite cuantos numeros se ordenaran" << endl;
 	cin >> array_length;
@@ -64,30 +65,45 @@ void sort::fill_array() {
 void sort::print_array() {
 
 	for (int i = 0; i < array_length; i++) {
-		cout << position[i] << "\t"<<endl;
+		cout << position[i] << "\t";
 	}
 	
 }
 
 //sort methods//
 
+
+
+//bubble sort: we compare two items in the array and swap them if they're not sorted untill array is sorted
 void sort::sort_method_bubble() {
 	print_array();
 	cout << "\n";
+
+
+	//infinite loop because we don't know how many iterations will be in this method
 	while (1 == 1) {
 
+
+		//counter is the marker
 		int counter = 0;
 		for (int i = 0; i < array_length - 1; i++) {
 
 			int number_compare = position[i];
 			if (number_compare > position[i + 1]) {
 
+
+
+				//here we swap if the numbers aren't sorted
 				int num_x = position[i + 1];
 				position[i + 1] = number_compare;
 				position[i] = num_x;
+
+				//the marker will change if we change numbers in the array
 				counter++;
 			}
 		}
+
+		//if there's no changes we exit the loop because the array is sorted
 		if (counter > 0) {
 
 			print_array();
@@ -99,6 +115,8 @@ void sort::sort_method_bubble() {
 		}
 	}
 }
+
+//insertion sort: we put numbers in the array and they will be sorted in real time
 void sort::sort_method_insertion() {
 
 	int actual_number, place, k = 0;
@@ -108,9 +126,14 @@ void sort::sort_method_insertion() {
 		position[k] = actual_number;
 		place = k;
 
+		//the 0 position will always be our initially sorted element
 		if (k == 0) {
 
+			//the numbers introduced by the user will be saved in the aux variable
 			position[k] = actual_number;
+
+			//here we are printing only the necesary elements (the introduced)
+
 			for (int i = 0; i < array_length; i++)
 			{
 				cout << position[i] << "\t";
@@ -120,7 +143,10 @@ void sort::sort_method_insertion() {
 			}
 			cout << "\n\n";
 		}
+
+		//for the positions after 0 in the array we will swap the numbers to their position looking in the previous numbers (going back)
 		else {
+
 
 			while (place > 0 && position[place - 1] > actual_number) {
 
@@ -130,6 +156,7 @@ void sort::sort_method_insertion() {
 
 			position[place] = actual_number;
 
+			//here we are printing only the necesary elements (the introduced)
 			for (int i = 0; i < array_length; i++)
 			{
 				cout << position[i] << "\t";
@@ -143,6 +170,7 @@ void sort::sort_method_insertion() {
 
 	}
 }
+//selection sort: basically we are searching for the smallest number in the entire array, then the second one, untill the array is sorted
 void sort:: sort_method_selection() {
 
 	print_array();
@@ -150,12 +178,14 @@ void sort:: sort_method_selection() {
 	int little_number, counter=0;
 	for (int i = 0; i < array_length-1; i++) {
 
+		//we take the position 0 as the "smallest" because in a 1 element array the position 0 is already sorted
 		int little_number = i;
 		counter = 0;
+		
 		for (int j = i + 1; j < array_length; j++) {		
 		
 		
-
+			//we are comparing all the elements to find the smallest
 			if (position[j] < position[little_number]) {
 
 				little_number = j;
@@ -164,9 +194,11 @@ void sort:: sort_method_selection() {
 		
 	
 		}
+		//the swap with aux variable
 		int v_aux = position[i];
 		position[i] = position[little_number];
 		position[little_number] = v_aux;
+		//we exit if the array is sorted
 		if (counter == 0) {
 			break;
 		}	
@@ -178,29 +210,37 @@ void sort:: sort_method_selection() {
 
 
 }
+
+//shell sort: A variation more efficient of insertion sort
+
 void sort::sort_method_shell() {
-
+	
+	//we evaluate positions in the array by "jumps" of separation based in the array length
 	int jump = array_length / 2;
-
+	
+	//we need at least 1 "jump" of distance (0 means compare the position with the same position)
 	while (jump > 0) {
 
 		int k = 0;
 
+
 		for (int i = jump; i < array_length; i++) {
 			
-			int v_aux = position[i];
 
+			//we give the value of the position in the array to an aux variable
+			int v_aux = position[i];
+			
+			//if the number in the correspondet "jump" is bigger, they will be swaped and move along in the array doing the same
 			for (k = i; k >= jump && position[k - jump] > v_aux; k -= jump) {
 
 				position[k] = position[k - jump];
-
-
 			}
-
+			
+			//doesn't matter if the number ins't bigger, it will be swaped with itself
 			position[k] = v_aux;
 				
 		}
-	
+	//reducing the space of the jumps
 		jump /= 2;
 
 	}
@@ -260,6 +300,7 @@ int main() {
 		}
 
 			break;
+		//shell sort
 		case 4: {
 			sort shell;
 			shell.ask_array();
@@ -267,6 +308,7 @@ int main() {
 			shell.fill_array();
 			shell.sort_method_shell();
 			shell.print_array();
+			cout << "\n";
 			system("pause");
 		}
 			  break;
