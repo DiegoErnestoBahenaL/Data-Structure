@@ -1,5 +1,7 @@
 //Created by Diego Ernesto Bahena López - 5B 18100022 
-//This program contains the sort methods (Bubble, insertion, selection, shell, quicksort, merge) 
+//This program contains the sort methods (Bubble, insertion, selection, shell) 
+
+//*quick sort & merge sort were not ready
 
 #include <iostream>
 
@@ -27,6 +29,7 @@ public:
 	void sort_method_insertion();
 	void sort_method_selection();
 	void sort_method_shell();
+	void sort_method_quicksort();
 
 	//destroyer
 	~sort();
@@ -122,6 +125,7 @@ void sort::sort_method_insertion() {
 	int actual_number, place, k = 0;
 
 	for (k; k < array_length; k++) {
+		cout << "Ingrese el numero de la posicion " << k + 1 << endl;
 		cin >> actual_number;
 		position[k] = actual_number;
 		place = k;
@@ -256,6 +260,8 @@ void sort::sort_method_shell() {
 
 
 
+
+
 int main() {
 
 //infinite loop to always show the menu
@@ -264,7 +270,7 @@ int main() {
 
 		int option_menu;
 		system("cls");
-		cout << "*Por favor, introduzca solo numeros enteros para interactuar con el programa*\nElige el metodo de ordenamiento:\n\n1. Bubble\n2. Insertion\n3. Selection\n4. Shell\n7. Salir\n";
+		cout << "*Por favor, introduzca solo numeros enteros para interactuar con el programa*\nElige el metodo de ordenamiento:\n\n1. Bubble\n2. Insertion\n3. Selection\n4. Salir\n";
 		cin >> option_menu;
 		switch (option_menu) {
 
@@ -312,7 +318,10 @@ int main() {
 			system("pause");
 		}
 			  break;
-		case 7:
+		//Quicksort
+		
+		
+		case 5:
 			return 0;
 		}
 	}
