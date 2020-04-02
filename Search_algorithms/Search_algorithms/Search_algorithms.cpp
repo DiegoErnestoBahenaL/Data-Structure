@@ -1,5 +1,5 @@
-//Created by Diego Ernesto Bahena López - 5B 18100022 
-
+//Created by Diego Ernesto Bahena Lï¿½pez - 5B 18100022 
+//this program contains the search algorithms (binary & sequential)
 
 
 #include <iostream>
@@ -15,25 +15,30 @@ class search {
 public:
 	int array_length, * position;
 
-	//gets the length of the array (2-20)
+
 	void ask_array();
-	//makes a dynamic array with the length of "array_length"
+
 	void create_array();
-	//fills the array with the user's data 
+	
 	void fill_array();
-void binary(int *, int , int , int);
 
+	//binary search
+    void binary(int *, int , int , int);
 
+	//sequential search
 	void sequential_search();
+	
+
+	//calls binary search function
 	void binary_search();
 	
 };
 
 //methods of the class
 
-
+	//gets the length of the array (1-100)  
 void search::ask_array() {
-	cout << "El programa genera una lista de números ordenados de menor a mayor dependiendo del tamaño que ingrese (Por ejemplo, un tamaño de 20 genera un arreglo del 1 -20)\nDigite el tamaño de la lista de números que se generará" << endl;
+	cout << "El programa genera una lista de nï¿½meros ordenados de menor a mayor dependiendo del tamaï¿½o que ingrese (Por ejemplo, un tamaï¿½o de 20 genera un arreglo del 1 -20)\nDigite el tamaï¿½o de la lista de nï¿½meros que se generarï¿½" << endl;
 	cin >> array_length;
 	if (array_length < 1 || array_length>100) {
 
@@ -41,13 +46,18 @@ void search::ask_array() {
 
 			cout << "Digite una cantidad valida (1-100)" << endl;
 			cin >> array_length;
+			BOTONISTO OWO
+			
+
 		}
 	}
 }
+//makes a dynamic array with the length of "array_length"
 void search::create_array() {
 	
 	position = new int[array_length];
 }
+// fills the array with sorted numbers from 1 to the position of length array
 void search::fill_array() {
 	for (int i = 0; i < array_length; i++) {
 			
@@ -59,12 +69,15 @@ void search::fill_array() {
 
 //search methods//
 
-
+//the sequential search check one position by one searching the number given
 void search::sequential_search() {
 	
 	int data;
+
+dkfhiSDHFAOSDFOSDIJFA
+	//this boolean is a little upgrade 
 	bool found = true;
-	cout << "Elige un número a buscar" << endl;
+	cout << "Elige un nï¿½mero a buscar" << endl;
 	cin >> data;
 
 	for (int i = 0; i < array_length; i++) {
@@ -73,6 +86,7 @@ void search::sequential_search() {
 
 			cout << "El numero " << data << " esta en la posicion " << i  << endl;
 			found = true;
+			//if we already found the number,we exit the loop
 
 			if (found == true) {
 
@@ -80,6 +94,8 @@ void search::sequential_search() {
 			}
 		}
 	}
+
+	
 	if (found == false) {
 
 		cout << "el numero ingresado no esta en esta lista de numeros" << endl;
@@ -87,44 +103,21 @@ void search::sequential_search() {
 
 }
 
+
+//The binary search will search the data by halfs, recursevely
 void search::binary(int * position, int data, int bottom, int top ) {
+
 
 	if (data > array_length || data < array_length) {
 		cout << "el numero ingresado no esta en esta lista de numeros" << endl;
 
 	}
-	else
-	{
-
-		int half = (bottom + top) / 2;
-		bool found = false;
-
-
-		if (data == position[half]) {
-
-
-			cout << "El numero " << data << " esta en la posicion " << half << endl;
-
-
-		}
-		else
-		{
-			if (position[half] < data) {
-				binary(position, data, half, top);
-			}
-			if (position[half] > data) {
-				binary(position, data, bottom, half);
-			}
-		}
-
-
-	}
 }
 
-
+//this method calls the binary function (this is because we can't use global variables to give arguments to a function)
 void search::binary_search() {
 	int data;
-	cout << "Elige un número a buscar" << endl;
+	cout << "Elige un nï¿½mero a buscar" << endl;
 	cin >> data;
 	binary(position, data, 0, array_length);
 }
@@ -155,7 +148,7 @@ int main() {
 
 		}
 			  break;
-			  //insertion sort
+			  //binary search
 		case 2: {
 
 			search bin;
